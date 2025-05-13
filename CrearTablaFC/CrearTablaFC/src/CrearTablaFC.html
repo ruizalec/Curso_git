@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CrearTablaFC</title>
+</head>    
+<body>
+   <script>
+            var i, j;
+            var filas = Number(prompt("¿Cuántas filas deseas agregar?"));
+            var columnas = Number(prompt("¿Cuántas columnas deseas agregar?"));
+            if (filas === "" || columnas === "") {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+            var res = filas * columnas;
+            document.write("<table border>");
+                for ( i = 0; i < filas; i++) {
+                    document.write("<tr>");
+                    for ( j = 0; j < columnas; j++) {
+                        document.write("<td>");
+                        document.write(res);
+                        res--;
+                        document.write("</td>");
+                    }
+                    document.write("</tr>");
+                }
+            document.write("</table>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tabla</title>
+    <link rel="stylesheet" href="Style.css">    
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad">
+        <div class="button_slide slide_down" onclick="CrearTabla()">Anexar Nombre </div>
+            
+            <style>
+                .button_slide {
+                    color: #ca15ea;
+                    border: 2px solid rgb(248, 246, 247);
+                    border-radius: 0px;
+                    padding: 0px 0px;
+                    display: inline-block;
+                    font-family: "Lucida Console", Monaco, monospace;
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    box-shadow: inset 0 0 0 0 #e0e3dc;
+                    -webkit-transition: ease-out 0.4s;
+                    -moz-transition: ease-out 0.4s;
+                    transition: ease-out 0.4s;
+                }
+                .slide_down:hover {
+                    box-shadow: inset 170px 0 0 0 #6fd170;
+                }
+                #outer {
+                width: 364px;
+                margin: 50px auto 0 auto;
+                 text-align: center;
+                } 
+            </style> 
+        
+    </form>
+<body>
+    <table id="myTable" border="2"></table>
+    
+    <script>
+        function CrearTabla() {
+            var nombre = document.getElementById("nombre").value;
+            var edad = document.getElementById("edad").value;
+
+            if (nombre === "" || edad === "") {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            var table = document.getElementById("myTable");
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = nombre;
+            cell2.innerHTML = edad;
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("edad").value = "";
+        }
+    </script>
+</body>
+</head>
+</html>

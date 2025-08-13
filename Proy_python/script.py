@@ -1,20 +1,24 @@
-#Escribir una función que pida un número entero entre 1 y 10 y
-# guarde en un fichero con el nombre tabla-n.txt
-# la tabla de multiplicar de ese número, donde n es el número introducido.
-def tabla_multiplicar():
+import requests
+
+# =========================
+# CONFIGURACIÓN TELEGRAM
+# =========================
+telegram_token = '82763113:AAG_JG6JBGCzODUiDN64NBwTHSBukb7dgcs'       # Reemplaza con tu token
+telegram_chat_id = 'Mexc_AlexIA'       # Reemplaza con tu chat ID
+
+def enviar_telegram(mensaje):
+    url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
+    payload = {'chat_id': telegram_chat_id, 'text': mensaje}
     try:
-        n = int(input("Ingresa un numero entre 1 y 10: "))
-        if 1 <= n <= 10:
-            archivo = f"tabla-{n}.txt"
-            with open(archivo, "w") as archivo:
-                for i in range(1,11):
-                    resultado = n * i
-                    archivo.write(f"{n} x {i} = {resultado}\n")
-            print (f"Tabla de multiplicar del {n} x {i} guardada en {archivo}")
+        response = requests.post(url, data=payload)
+        if response.status_code == 200:
+            print("Mensaje enviado correctamente ✅")
         else:
-            print ("El numero ingresado no es valido")
-    except ValueError:
-        print ("El numero ingresado no es valido ingresa uno nuevo")
+            print("Error al enviar mensaje:", response.text)
+    except Exception as e:
+        print("Excepción al enviar mensaje:", e)
 
-tabla_multiplicar()
-
+# =========================
+# EJEMPLO DE USO
+# =========================
+enviar_telegram("Hola desde Python! 🚀")
